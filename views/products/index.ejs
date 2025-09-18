@@ -1,0 +1,35 @@
+<%- include('../partials/header') %>
+
+<div class="container mt-4">
+  <h2 class="mb-3">Products</h2>
+  <a href="/products/new" class="btn btn-success mb-3">+ Add Product</a>
+
+  <table class="table table-striped table-bordered align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Supplier</th>
+        <th style="width: 150px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.forEach(p => { %>
+        <tr>
+          <td><%= p.name %></td>
+          <td><%= p.address %></td>
+          <td><%= p.phone %></td>
+          <td><%= p.supplierId ? p.supplierId.name : 'N/A' %></td>
+          <td>
+            <a href="/products/edit/<%= p._id %>" class="btn btn-sm btn-primary">Edit</a>
+            <a href="/products/delete/<%= p._id %>" class="btn btn-sm btn-danger"
+               onclick="return confirm('Are you sure?')">Delete</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../partials/footer') %>
